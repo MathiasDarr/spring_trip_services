@@ -1,4 +1,4 @@
-package org.mddarr.tripservice.models;
+package org.mddarr.tripservice.dto.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,6 @@ public class CreateNewTripRequest {
 
     public CreateNewTripRequest(String user_id){
         this.user_id = user_id;
-
     }
 
 

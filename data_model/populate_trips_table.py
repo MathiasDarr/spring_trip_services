@@ -23,8 +23,25 @@ def populate_user_table():
         for row in reader:
             dbsession.execute(insert_trip_data_point, [row['user_id']])
 
-
 def populate_trips_table():
+    create_trips_table = """CREATE TABLE IF NOT EXISTS trips(
+            trip_id text, 
+            user_id text,
+            PRIMARY KEY(trip_id));
+        """
+    dbsession.execute(create_trips_table)
+
+    insert_trip_data_point = """INSERT INTO trips(trip_id, user_id) VALUES(%s,%s);"""
+
+    TRIP_DATA_CSV_FILE = 'data/trips/trips.csv'
+
+    with open(TRIP_DATA_CSV_FILE, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            dbsession.execute(insert_trip_data_point, [row['trip_id'], row['user_id']])
+
+
+def populate_user_trips_table():
     create_trip_data_point_table = """CREATE TABLE IF NOT EXISTS trip_data(
         user_id text,
         trip_id text, 
@@ -54,6 +71,6 @@ if __name__ == '__main__':
         dbsession.set_keyspace('ks1')
     except Exception as e:
         print(e)
-
-    populate_user_table()
     populate_trips_table()
+    populate_user_table()
+    populate_user_trips_table()

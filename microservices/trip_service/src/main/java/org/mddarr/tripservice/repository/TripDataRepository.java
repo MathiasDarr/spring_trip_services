@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TripRepository extends CassandraRepository<Trip, Long> {
+public interface TripDataRepository extends CassandraRepository<TripDataPoint, Long> {
 
-    @Query("SELECT * from trips;")
-    List<Trip> getTrips();
+    @Query("SELECT * from trip_data where user_id=?0 and trip_id=?1")
+    List<TripDataPoint> getTripData(String user_id, String trip_id);
+
+
 
 }

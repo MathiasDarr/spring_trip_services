@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
+import java.sql.Timestamp;
+
 
 @Table("trip_data")
 @Data
@@ -18,31 +20,27 @@ public class TripDataPoint {
     private String trip_id;
 
     @PrimaryKeyColumn(name="time", ordinal = 2, type = PrimaryKeyType.CLUSTERED )
-    private String time;
+    private Timestamp time;
+
+    private Double lat;
+    private Double lng;
 
     public String getUser_id() {
         return user_id;
     }
-
     public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
-
     public String getTrip_id() {
         return trip_id;
     }
-
     public void setTrip_id(String trip_id) {
         this.trip_id = trip_id;
     }
 
-    public String getTime() {
-        return time;
-    }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
+
+
 }
 
 

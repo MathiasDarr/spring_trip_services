@@ -18,7 +18,7 @@ public class CassandraTrip {
     private Double distance;
     private Double length;
 
-    public CassandraTrip(String trip_id, String user_id){
+    public CassandraTrip(String user_id, String trip_id){
         this.id = trip_id;
         this.user_id = user_id;
         this.distance = 0.0;

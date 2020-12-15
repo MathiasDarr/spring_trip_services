@@ -13,4 +13,7 @@ public interface TripRepository extends CassandraRepository<CassandraTrip, Long>
     @Query("SELECT * from trips;")
     List<CassandraTrip> getTrips();
 
+    @Query("DELETE FROM trips where trip_id=?0")
+    void deleteTrip(String tripid);
+
 }

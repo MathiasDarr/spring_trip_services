@@ -1,11 +1,23 @@
 package org.mddarr.locationtracker.dto.responses;
 
-public class Trip {
+import java.util.List;
 
-    public class TripDataPoints{
-        Double[] lats;
-        Double[] lngs;
-        Double[] timestamps;
+
+public class Trip {
+    private String userid;
+
+    private List<Double> lats;
+    private List<Double> lngs;
+    private List<Double> timestamps;
+//
+//    public class TripDataPoints{
+//        this.lats = Double [10];
+//
+//    }
+
+    public Trip(){
+
     }
+
 
 }

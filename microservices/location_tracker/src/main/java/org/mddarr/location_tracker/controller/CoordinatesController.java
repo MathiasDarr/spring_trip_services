@@ -13,12 +13,13 @@ import org.springframework.web.util.HtmlUtils;
 @Controller
 public class CoordinatesController {
 
-    @MessageMapping("/coordinates")
-    @SendTo("/topic/coordinates")
-    public CoordinatesMessage coords(@Payload CoordinatesMessage coordinatesMessage) throws Exception {
-        Thread.sleep(1000); // simulated delay
-        return new CoordinatesMessage(coordinatesMessage.getLat(), coordinatesMessage.getLng());
-    }
+//    @MessageMapping("/coordinates")
+//    @SendTo("/topic/coordinates")
+//    public CoordinatesMessage coords(@Payload CoordinatesMessage coordinatesMessage) throws Exception {
+//        Thread.sleep(1000); // simulated delay
+//        System.out.println("I GET CALLED AND MY COORDS ARE " + coordinatesMessage.getLat());
+//        return new CoordinatesMessage(coordinatesMessage.getLat(), coordinatesMessage.getLng());
+//    }
 
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")

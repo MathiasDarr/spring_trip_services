@@ -83,6 +83,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
@@ -100,12 +101,13 @@ export default {
       console.log("Send message:" + this.send_message);
       if (this.stompClient && this.stompClient.connected) {
         const msg = { name: this.send_message };
+        const coordinates = {lat:12.1, lng:39.1}
         console.log(JSON.stringify(msg));
         this.stompClient.send("/app/hello", JSON.stringify(msg), {});
       }
     },
     connect() {
-      this.socket = new SockJS("http://localhost:8080/gs-guide-websocket");
+      this.socket = new SockJS("http://localhost:8080/location-tracker-websocket");
       this.stompClient = Stomp.over(this.socket);
       this.stompClient.connect(
         {},

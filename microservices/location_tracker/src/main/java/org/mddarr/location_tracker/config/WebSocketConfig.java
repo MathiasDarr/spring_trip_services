@@ -8,7 +8,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class WsConfig implements WebSocketMessageBrokerConfigurer{
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
@@ -18,14 +18,14 @@ public class WsConfig implements WebSocketMessageBrokerConfigurer{
 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint("/location")
+		registry.addEndpoint("/location-tracker-websocket")
 				.setAllowedOrigins("http://localhost:8081")
 				.withSockJS();
 
-		registry.addEndpoint("/gs-guide-websocket")
-				.setAllowedOrigins("http://localhost:8081",
-						"chrome-extension://ggnhohnkfcpcanfekomdkjffnfcjnjam")
-				.withSockJS();
+//		registry.addEndpoint("/gs-guide-websocket")
+//				.setAllowedOrigins("http://localhost:8081",
+//						"chrome-extension://ggnhohnkfcpcanfekomdkjffnfcjnjam")
+//				.withSockJS();
 	}
 
 

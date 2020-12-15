@@ -1,8 +1,8 @@
 package org.mddarr.location_tracker.controller;
 
 import org.mddarr.location_tracker.model.CoordinatesMessage;
+import org.mddarr.location_tracker.model.CoordinatesResponse;
 import org.mddarr.location_tracker.model.Greeting;
-import org.mddarr.location_tracker.model.HelloMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -23,9 +23,9 @@ public class CoordinatesController {
 
     @MessageMapping("/coordinates")
     @SendTo("/topic/coordinates")
-    public Greeting greeting(@Payload HelloMessage message) throws Exception {
+    public CoordinatesResponse greeting(@Payload CoordinatesMessage message) throws Exception {
         Thread.sleep(1000); // simulated delay
-        return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");
+        return new CoordinatesResponse("Hello, " + message.getLat());
     }
 
 }

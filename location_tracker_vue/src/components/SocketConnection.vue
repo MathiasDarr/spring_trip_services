@@ -100,10 +100,8 @@ export default {
     send() {
       console.log("Send message:" + this.send_message);
       if (this.stompClient && this.stompClient.connected) {
-        const msg = { name: this.send_message };
         const coordinates = {lat:12.1, lng:39.1}
-        console.log(JSON.stringify(msg));
-        this.stompClient.send("/app/coordinates", JSON.stringify(msg), {});
+        this.stompClient.send("/app/coordinates", JSON.stringify(coordinates), {});
       }
     },
     connect() {

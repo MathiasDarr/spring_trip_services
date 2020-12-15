@@ -20,8 +20,9 @@
 	</properties>
 	<modules>
 <!--		<module>authentication_service</module>-->
-		<module>locationrabbit</module>
-		<module>locationtracker</module>
+<!--		<module>locationrabbit</module>-->
+<!--		<module>locationtracker</module>-->
+		<module>ridesseervice</module>
 	</modules>
 
 	<repositories>

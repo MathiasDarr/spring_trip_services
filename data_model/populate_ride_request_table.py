@@ -16,19 +16,20 @@ def populate_ride_requests_table():
         location_lng float,
         destination_lat float, 
         destination_lng float,
+        riders int,
         PRIMARY KEY(user_id, request_time)
     );"""
     dbsession.execute(create_users_table)
 
-    insert_trip_data_point = """INSERT INTO ride_requests(user_id, request_time,location_lat, location_lng, destination_lat, destination_lng)
-        VALUES(%s, %s,%s,%s,%s,%s);"""
+    insert_trip_data_point = """INSERT INTO ride_requests(user_id, request_time,location_lat, location_lng, destination_lat, destination_lng, riders)
+        VALUES(%s, %s,%s,%s,%s,%s, %s);"""
 
     PROVIDERS_CSV_FILE = 'data/ride_requests/ride_requests.csv'
     with open(PROVIDERS_CSV_FILE, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             dbsession.execute(insert_trip_data_point, [row['user_id'], row['request_time'], float(row['location_lat']) ,
-                                                       float(row['location_lng']) , float(row['destination_lat']), float(row['destination_lng'])])
+                                                       float(row['location_lng']) , float(row['destination_lat']), float(row['destination_lng']), int(row['riders'])])
 
 
 

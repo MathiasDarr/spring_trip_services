@@ -1,3 +1,4 @@
-user_id
-9e1b5258-66c8-4263-9b6e-c22a264092f4
-60a230b4-281d-42bf-97b7-a0b835428ef2
+user_id,first_name,last_name
+9e1b5258-66c8-4263-9b6e-c22a264092f4,Geroge,Jones
+60a230b4-281d-42bf-97b7-a0b835428ef2,Alan,Jackson
+10cbf999-de6e-414a-8953-e1ce30035322,Clint,Black

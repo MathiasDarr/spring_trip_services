@@ -21,7 +21,7 @@
 	<modules>
 <!--		<module>trip_service</module>-->
 <!--		<module>authentication_service</module>-->
-		<module>location_tracker</module>
+		<module>locationtracker</module>
 	</modules>
 
 	<repositories>

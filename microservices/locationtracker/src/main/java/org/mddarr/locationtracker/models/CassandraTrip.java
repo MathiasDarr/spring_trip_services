@@ -15,20 +15,22 @@ public class CassandraTrip {
     @PrimaryKeyColumn(name="trip_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private String id;
     private String user_id;
-    private Double trip_length;
+    private Double distance;
+    private Double length;
 
     public CassandraTrip(String trip_id, String user_id){
         this.id = trip_id;
         this.user_id = user_id;
-        this.trip_length = 0.0;
+        this.distance = 0.0;
+        this.length = 0.0;
     }
 
-    public String getTrip_id() {
+    public String getId() {
         return id;
     }
 
-    public void setTrip_id(String trip_id) {
-        this.id = trip_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUser_id() {
@@ -39,12 +41,20 @@ public class CassandraTrip {
         this.user_id = user_id;
     }
 
-    public Double getTrip_length() {
-        return trip_length;
+    public Double getDistance() {
+        return distance;
     }
 
-    public void setTrip_length(Double trip_length) {
-        this.trip_length = trip_length;
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
+
+    public Double getLength() {
+        return length;
+    }
+
+    public void setLength(Double length) {
+        this.length = length;
     }
 }
 

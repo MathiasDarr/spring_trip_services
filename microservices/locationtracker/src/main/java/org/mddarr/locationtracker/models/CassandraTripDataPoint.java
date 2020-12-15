@@ -12,26 +12,18 @@ import java.sql.Timestamp;
 @Table("trip_data")
 @Data
 @NoArgsConstructor
-public class TripDataPoint {
+public class CassandraTripDataPoint {
 
-    @PrimaryKeyColumn(name="user_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
-    private String user_id;
 
-    @PrimaryKeyColumn(name="trip_id", ordinal = 1, type = PrimaryKeyType.PARTITIONED)
+    @PrimaryKeyColumn(name="trip_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private String trip_id;
 
-    @PrimaryKeyColumn(name="time", ordinal = 2, type = PrimaryKeyType.CLUSTERED )
+    @PrimaryKeyColumn(name="time", ordinal = 1, type = PrimaryKeyType.CLUSTERED )
     private Timestamp time;
 
     private Double lat;
     private Double lng;
 
-    public String getUser_id() {
-        return user_id;
-    }
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
     public String getTrip_id() {
         return trip_id;
     }

@@ -27,41 +27,40 @@ def populate_trips_table():
     create_trips_table = """CREATE TABLE IF NOT EXISTS trips(
             trip_id text, 
             user_id text,
+            distance float, 
+            length float,
             PRIMARY KEY(trip_id));
         """
     dbsession.execute(create_trips_table)
 
-    insert_trip_data_point = """INSERT INTO trips(trip_id, user_id) VALUES(%s,%s);"""
+    insert_trip_data_point = """INSERT INTO trips(trip_id, user_id, length, distance) VALUES(%s,%s, %s, %s);"""
 
     TRIP_DATA_CSV_FILE = 'data/trips/trips.csv'
 
     with open(TRIP_DATA_CSV_FILE, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            dbsession.execute(insert_trip_data_point, [row['trip_id'], row['user_id']])
+            dbsession.execute(insert_trip_data_point, [row['trip_id'], row['user_id'], 0.0, 0.0])
 
 
 def populate_user_trips_table():
     create_trip_data_point_table = """CREATE TABLE IF NOT EXISTS trip_data(
-        user_id text,
         trip_id text, 
         time timestamp,
         latitude float,
         longitude float,
-        PRIMARY KEY((user_id, trip_id), time));
+        PRIMARY KEY((trip_id), time));
     """
     dbsession.execute(create_trip_data_point_table)
 
-    insert_trip_data_point = """INSERT INTO trip_data(user_id, trip_id, time, latitude, longitude) VALUES(%s,%s,%s,%s, %s);"""
+    insert_trip_data_point = """INSERT INTO trip_data(trip_id, time, latitude, longitude) VALUES(%s,%s,%s,%s);"""
 
     TRIP_DATA_CSV_FILE = 'data/trips/trips.csv'
 
     with open(TRIP_DATA_CSV_FILE, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            dbsession.execute(insert_trip_data_point,
-                              [row['user_id'], row['trip_id'], row['time'], float(row['latitude']),
-                               float(row['longitude'])])
+            dbsession.execute(insert_trip_data_point,[row['trip_id'], row['time'], float(row['latitude']),float(row['longitude'])])
 
 
 if __name__ == '__main__':

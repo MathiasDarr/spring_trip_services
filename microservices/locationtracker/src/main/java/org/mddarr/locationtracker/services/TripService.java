@@ -1,7 +1,7 @@
 package org.mddarr.locationtracker.services;
 
 import org.mddarr.locationtracker.models.CassandraTrip;
-import org.mddarr.locationtracker.models.TripDataPoint;
+import org.mddarr.locationtracker.models.CassandraTripDataPoint;
 import org.mddarr.locationtracker.repository.TripDataRepository;
 import org.mddarr.locationtracker.repository.TripRepository;
 import org.springframework.data.cassandra.core.CassandraOperations;
@@ -28,7 +28,7 @@ public class TripService {
         return tripRepository.getTrips();
     }
 
-    public List<TripDataPoint> getTripData(String user_id, String trip_id){
+    public List<CassandraTripDataPoint> getTripData(String user_id, String trip_id){
         return this.tripDataRepository.getTripData(user_id, trip_id);
     }
 

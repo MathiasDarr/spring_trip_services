@@ -103,7 +103,7 @@ export default {
         const msg = { name: this.send_message };
         const coordinates = {lat:12.1, lng:39.1}
         console.log(JSON.stringify(msg));
-        this.stompClient.send("/app/hello", JSON.stringify(msg), {});
+        this.stompClient.send("/app/coordinates", JSON.stringify(msg), {});
       }
     },
     connect() {
@@ -114,7 +114,7 @@ export default {
         frame => {
           this.connected = true;
           console.log(frame);
-          this.stompClient.subscribe("/topic/greetings", tick => {
+          this.stompClient.subscribe("/topic/coordinates", tick => {
             console.log(tick);
             this.received_messages.push(JSON.parse(tick.body).content);
           });

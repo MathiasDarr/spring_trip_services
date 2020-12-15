@@ -21,8 +21,8 @@ public class CoordinatesController {
 //        return new CoordinatesMessage(coordinatesMessage.getLat(), coordinatesMessage.getLng());
 //    }
 
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
+    @MessageMapping("/coordinates")
+    @SendTo("/topic/coordinates")
     public Greeting greeting(@Payload HelloMessage message) throws Exception {
         Thread.sleep(1000); // simulated delay
         return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");

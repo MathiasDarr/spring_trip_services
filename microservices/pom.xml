@@ -19,8 +19,9 @@
 		<java.version>11</java.version>
 	</properties>
 	<modules>
-		<module>trip_service</module>
-		<module>authentication_service</module>
+<!--		<module>trip_service</module>-->
+<!--		<module>authentication_service</module>-->
+		<module>location_tracker</module>
 	</modules>
 
 	<repositories>

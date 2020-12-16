@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Landing from './components/Landing'
-
 import Login from './components/Login'
 import Register from './components/Register'
 import Confirm from './components/Confirm'
 
+
+import Profile from './components/profile/Profile'
+import Landing from './components/Landing'
 
 
 Vue.use(Router)
@@ -15,9 +16,8 @@ export default new Router({
   mode:'history',
   base: process.env.BASE_URL,
   routes: [
-
     {
-      path: '/',
+      path:'/',
       component: Landing
     },
 
@@ -38,5 +38,10 @@ export default new Router({
       component: Confirm
     },
 
+    {
+      name: "profile",
+      path:"/profile",
+      component: Profile
+    },
   ]
 })

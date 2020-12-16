@@ -2,17 +2,14 @@
   <v-app>
     <nav>
     <div>
-      <v-toolbar dark prominent  height="340px" src="https://dakobed.s3-us-west-1.amazonaws.com/panorama.jpg">
-
-      </v-toolbar>
     </div>
 
       <v-toolbar flat dark class="py-0 mt">
         
         <v-app-bar-nav-icon class ="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
           <v-toolbar-title class="grey--text">
-            <span class="font-weight-light">Dakobed</span>
-            <span>Bard</span>
+            <span class="font-weight-light">Dakobed </span>
+            <span>RideShare Services</span>
           </v-toolbar-title>
           <v-spacer></v-spacer>
       <v-toolbar-items class = "hidden-xs-only">
@@ -28,7 +25,7 @@
       </v-toolbar>
     </nav>
 
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
   </v-app>
 </template>
 
@@ -48,14 +45,12 @@ export default {
   },
   created(){
 
-  
-    
   },
   data(){
     return {
         drawer: false,
         menuItems:[
-          {title:'Landing', route:'/' }, 
+          {title: 'Ride Requests', route :'/rides'},
           {title:'Login', route:'/login/' },
         ],
 

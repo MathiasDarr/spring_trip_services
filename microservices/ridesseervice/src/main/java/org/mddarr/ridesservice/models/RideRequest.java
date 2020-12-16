@@ -29,6 +29,9 @@ public class RideRequest {
     private Double destination_lat;
     private Double destination_lng;
 
+    private String status;
+
+
     public String getUser_id() {
         return user_id;
     }
@@ -53,6 +56,21 @@ public class RideRequest {
         this.riders = riders;
     }
 
+    public Double getDestination_lng() {
+        return destination_lng;
+    }
+
+    public void setDestination_lng(Double destination_lng) {
+        this.destination_lng = destination_lng;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getDestination() {
         return destination;
@@ -84,14 +102,6 @@ public class RideRequest {
 
     public void setDestination_lat(Double destination_lat) {
         this.destination_lat = destination_lat;
-    }
-
-    public Double getDstination_lng() {
-        return destination_lng;
-    }
-
-    public void setDstination_lng(Double dstination_lng) {
-        this.destination_lng = dstination_lng;
     }
 
     @Override

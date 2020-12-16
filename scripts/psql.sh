@@ -1,2 +1,2 @@
 #!/bin/bash
-docker exec -it postgres psql 'dbname=postgres user=postgres'
+docker exec -it postgres psql 'dbname=postgresdb user=postgres'

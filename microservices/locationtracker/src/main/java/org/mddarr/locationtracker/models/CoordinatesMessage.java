@@ -1,33 +1,40 @@
 package org.mddarr.locationtracker.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-import org.springframework.stereotype.Controller;
+import java.util.Date;
 
-@Controller
+
+@AllArgsConstructor
+@Data
 public class CoordinatesMessage {
 
     public enum MessageType {
         CHAT, LEAVE, JOIN, START, END
     }
-
+    private String trip_id;
     private Double lat;
     private Double lng;
-    private String sender;
+    private Date time;
     private MessageType type;
 
     public CoordinatesMessage() {
     }
 
-    public CoordinatesMessage(Double lat, Double lng) {
+    public CoordinatesMessage(String trip_id, Date time, Double lat, Double lng ) {
+        this.trip_id = trip_id;
         this.lat = lat;
         this.lng = lng;
+        this.time = time;
     }
 
-    public String getSender() {
-        return sender;
+    public Date getTime() {
+        return time;
     }
-    public void setSender(String sender) {
-        this.sender = sender;
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public MessageType getType() {

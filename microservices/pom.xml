@@ -19,10 +19,13 @@
 		<java.version>11</java.version>
 	</properties>
 	<modules>
+		<module>tripservice</module>
 <!--		<module>authentication_service</module>-->
 <!--		<module>locationrabbit</module>-->
 <!--		<module>locationtracker</module>-->
-		<module>ridesseervice</module>
+<!--		<module>ridesseervice</module>-->
+<!--		<module>socket_security</module>-->
+<!--			<module>security_practice</module>-->
 	</modules>
 
 	<repositories>

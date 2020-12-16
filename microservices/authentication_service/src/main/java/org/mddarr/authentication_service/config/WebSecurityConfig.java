@@ -20,8 +20,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
 /**
@@ -32,41 +34,6 @@ import org.springframework.security.web.header.writers.frameoptions.XFrameOption
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-			.csrf().disable()  // Refactor login form
-
-			// See https://jira.springsource.org/browse/SPR-11496
-			.headers().addHeaderWriter(
-				new XFrameOptionsHeaderWriter(
-						XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)).and()
-
-			.formLogin()
-				.defaultSuccessUrl("/index.html")
-				.loginPage("/login.html")
-				.failureUrl("/login.html?error")
-				.permitAll()
-				.and()
-			.logout()
-				.logoutSuccessUrl("/login.html?logout")
-				.logoutUrl("/logout.html")
-				.permitAll()
-				.and()
-			.authorizeRequests()
-				.antMatchers("/static/**").permitAll()
-				.antMatchers("/webjars/**").permitAll()
-				.anyRequest().authenticated()
-				.and();
-	}
 
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		auth
-			.inMemoryAuthentication()
-				.withUser("fabrice").password(encoder.encode("fab123")).roles("USER").and()
-				.withUser("paulson").password(encoder.encode("bond")).roles("ADMIN","USER");
-	}
 }

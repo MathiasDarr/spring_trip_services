@@ -1,11 +1,9 @@
 package org.mddarr.locationtracker.controller;
 
 
-import org.mddarr.locationtracker.dto.requests.CreateNewTripRequest;
-import org.mddarr.locationtracker.dto.responses.Trip;
 import org.mddarr.locationtracker.models.CassandraTrip;
 import org.mddarr.locationtracker.models.CassandraTripDataPoint;
-import org.mddarr.locationtracker.services.TripService;
+import org.mddarr.locationtracker.services.TripServiceImpl;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +13,9 @@ import java.util.List;
 
 @RestController
 public class TripController {
-    private final TripService tripService;
+    private final TripServiceImpl tripService;
 
-    public TripController(TripService tripService){
+    public TripController(TripServiceImpl tripService){
         this.tripService= tripService;
     }
 
@@ -42,9 +40,6 @@ public class TripController {
         tripService.deleteTrip(tripid);
         return ResponseEntity.noContent().build();
     }
-
-
-
 
 }
 
